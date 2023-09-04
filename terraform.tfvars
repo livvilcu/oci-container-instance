@@ -1,0 +1,6 @@
+compartment_ocid=""
+ad=""
+name="oci-container-instance-stack"
+container_image_url="busybox"
+shape_config_ocpus="1"
+region="eu-zurich-1"
