@@ -1,4 +1,4 @@
-compartment_ocid="ocid1.compartment.oc1..aaaaaaaata2vn44z6wwg3e5lbjzeub4vcjxj4lw2ykonawjrhmjqrniqdoka"
+compartment_ocid=""
 ad="Wfog:EU-ZURICH-1-AD-1"
 name="oci-container-instance-stack"
 container_image_url="busybox"
