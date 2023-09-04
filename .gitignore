@@ -6,3 +6,8 @@
 /oci-container-instance.iml
 /.idea/vcs.xml
 /.idea/workspace.xml
+/.terraform.lock.hcl
+/.terraform/providers/registry.terraform.io/oracle/oci/5.11.0/windows_amd64/CHANGELOG.md
+/.terraform/providers/registry.terraform.io/oracle/oci/5.11.0/windows_amd64/LICENSE.txt
+/.terraform/providers/registry.terraform.io/oracle/oci/5.11.0/windows_amd64/README.md
+/.terraform/providers/registry.terraform.io/oracle/oci/5.11.0/windows_amd64/terraform-provider-oci_v5.11.0.exe
