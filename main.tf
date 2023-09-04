@@ -1,13 +1,13 @@
 resource "oci_container_instances_container_instance" "this" {
-  compartment_id           = var.compartment_ocid
-  display_name             = var.name
-  availability_domain      = var.ad
-  shape                    = "CI.Standard.E4.Flex"
+  compartment_id      = var.compartment_ocid
+  display_name        = var.name
+  availability_domain = var.ad
+  shape               = "CI.Standard.E4.Flex"
   shape_config {
-    ocpus         = var.shape_config_ocpus
+    ocpus = var.shape_config_ocpus
   }
   vnics {
-    subnet_id              = oci_core_subnet.test_subnet.id
+    subnet_id = oci_core_subnet.test_subnet.id
   }
   containers {
     display_name          = var.name
@@ -21,7 +21,7 @@ resource "oci_container_instances_container_instance" "this" {
 }
 
 resource "oci_core_vcn" "test_vcn" {
-  cidr_block     = "10.0.0.0/16"
+  cidr_blocks    = ["10.0.0.0/16"]
   compartment_id = var.compartment_ocid
   dns_label      = "TestDNS"
 }
@@ -29,7 +29,7 @@ resource "oci_core_vcn" "test_vcn" {
 resource "oci_core_subnet" "test_subnet" {
   cidr_block     = "10.0.0.0/24"
   compartment_id = var.compartment_ocid
-  vcn_id = oci_core_vcn.test_vcn.id
+  vcn_id         = oci_core_vcn.test_vcn.id
   dns_label      = "TestSubnet"
 }
 

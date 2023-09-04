@@ -1,6 +1,6 @@
-compartment_ocid=""
 ad="Wfog:EU-ZURICH-1-AD-1"
 name="oci-container-instance-stack"
 container_image_url="busybox"
 shape_config_ocpus="1"
 region="eu-zurich-1"
+compartment_ocid="ocid1.compartment.oc1.."
