@@ -18,24 +18,12 @@ resource "oci_container_instances_container_instance" "this" {
   }
 }
 
-resource "oci_core_internet_gateway" "demo_igw" {
+resource "oci_core_internet_gateway" "test_igw" {
 
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.test_vcn.id
   display_name   = "demo-vcn - Internet gateway"
   enabled        = true
-}
-
-resource "oci_core_route_table" "demo_igw_rt" {
-
-  compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_vcn.test_vcn.id
-  display_name   = "demo vcn - Internet gateway route table"
-  route_rules {
-
-    network_entity_id = oci_core_internet_gateway.demo_igw.id
-    destination       = "0.0.0.0/0"
-  }
 }
 
 resource "oci_core_vcn" "test_vcn" {
@@ -49,6 +37,7 @@ resource "oci_core_subnet" "test_subnet" {
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.test_vcn.id
   dns_label      = "TestSubnet"
+  route_table_id = oci_core_route_table.test_igw_rt.id
 }
 
 
@@ -59,7 +48,7 @@ resource "oci_core_route_table" "test_igw_rt" {
   display_name   = "test vcn - Internet gateway route table"
   route_rules {
 
-    network_entity_id = oci_core_internet_gateway.demo_igw.id
+    network_entity_id = oci_core_internet_gateway.test_igw.id
     destination       = "0.0.0.0/0"
   }
 }
