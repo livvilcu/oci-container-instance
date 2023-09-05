@@ -60,7 +60,8 @@ variables:
     type: oci:identity:compartment:id
 
   env_variables:
-    type: map
+    type: string
+    visible: true
     required: false
     description: Environment Variables
     title: Environment Variables
