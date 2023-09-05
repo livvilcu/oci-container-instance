@@ -14,9 +14,7 @@ resource "oci_container_instances_container_instance" "this" {
     image_url             = var.container_image_url
     command               = ["/bin/bash", "-c"]
     arguments             = ["hostname"]
-    environment_variables = {
-      "environment" = "variable"
-    }
+    environment_variables = var.env_variables
   }
 }
 
@@ -53,13 +51,6 @@ resource "oci_core_subnet" "test_subnet" {
   dns_label      = "TestSubnet"
 }
 
-resource "oci_core_internet_gateway" "test_igw" {
-
-  compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_vcn.test_vcn.id
-  display_name   = "test-vcn - Internet gateway"
-  enabled        = true
-}
 
 resource "oci_core_route_table" "test_igw_rt" {
 
@@ -68,7 +59,7 @@ resource "oci_core_route_table" "test_igw_rt" {
   display_name   = "test vcn - Internet gateway route table"
   route_rules {
 
-    network_entity_id = oci_core_internet_gateway.test_igw.id
+    network_entity_id = oci_core_internet_gateway.demo_igw.id
     destination       = "0.0.0.0/0"
   }
 }

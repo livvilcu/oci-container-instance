@@ -58,3 +58,9 @@ variables:
   # compartmentId dynamic dropdown, compartment_ocid present in input variables
   compartment_ocid:
     type: oci:identity:compartment:id
+
+  env_variables:
+    type: map
+    required: false
+    description: Environment Variables
+    title: Environment Variables
