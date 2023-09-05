@@ -1,6 +1,6 @@
 resource "oci_container_instances_container_instance" "this" {
   compartment_id      = var.compartment_ocid
-  display_name        = var.name
+  display_name        = var.container_name
   availability_domain = var.ad
   shape               = "CI.Standard.E4.Flex"
   shape_config {
@@ -10,7 +10,7 @@ resource "oci_container_instances_container_instance" "this" {
     subnet_id = oci_core_subnet.test_subnet.id
   }
   containers {
-    display_name          = var.name
+    display_name          = var.container_name
     image_url             = var.container_image_url
     command               = ["/bin/bash", "-c"]
     arguments             = ["hostname"]

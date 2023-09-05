@@ -1,14 +1,9 @@
-title: Sample input variable schema
+title: Container Instance Resource Deployment
 # Sub Title shown in Application Information tab.
-description: Sample description...
-informationalText: Sample informational text to display in tab...
+description: Container Instance Resource Deployment
+informationalText: Container Instance Resource Deployment
 schemaVersion: 1.1.0
 version: "20190304"
-
-# URL of Logo Icon used on Application Information tab. Logo must be 130x130 pixels.
-# (Optional)
-logoUrl: https://cloudmarketplace.oracle.com/marketplace/content?contentId=53066708
-
 # Used in Application Information tab to Hyperlink Title and Logo to the Marketplace
 # Listing.
 # Also used to link to Listing Usage section for "View Instructions".
@@ -29,62 +24,42 @@ variableGroups:
       - container_image_url
       - shape_config_ocpus
 variables:
-  # region field
   region:
     description: Region
     type: string
     required: false
     default: eu-zurich-1
 
-  # integer field
   ad:
     type: string
     description: Availability Domain
     required: false
     default: Wfog:EU-ZURICH-1-AD-1
 
-  # non-integer number field
-  name:
+  container_name:
     type: string
+    description: Container Instance name
     required: true
 
-  # string enum
   container_image_url:
     type: string
+    description: Container Image URL
     required: false
     default: busybox
 
-  # input a list, each element must be an ip addresses
   shape_config_ocpus:
     type: integer
     required: false
     default: 1
 
-  # compartmentId dynamic dropdown, targetCompartment present in input variables
+  # compartmentId dynamic dropdown, compartment_ocid present in input variables
   compartment_ocid:
     type: oci:identity:compartment:id
 
-# primaryOutputButton is a reference to a link output that creates a primary button
-# on the Application Information tab.
-# (Optional) if not provided, no primary button is shown.  Also if the output
-# referenced is not a link output, no button is shown.
-#primaryOutputButton: ${controlCenterUrl}
-
-# Used to group Outputs.  Any outputs not included in these defined groups, are
-# included in a default group labelled "Outputs".
-# (Optional) if not groups are given, outputs are not grouped at all.
-#outputGroups:
-#  - title: Schema Registry
-#    outputs:
-#      - ${schemaRegistryUrl}
-#      - ${schemaRegistryPublicIps}
-#      - ${schemaRegistryInstances}
-#      - ${schemaRegistryLoadBalancer}
-#
-#  - title: Broker / Connect
-#    outputs:
-#      - ${brokerPublicIps}
-#      - ${brokerInstances}
-#      - ${connectUrl}
-#      - ${connectPublicIps}
-#      - ${restUrl}
+#############################################
+##############     OUTPUTS     ##############
+#############################################
+outputs:
+  instance_id:
+    type: ocid
+    visible: true
